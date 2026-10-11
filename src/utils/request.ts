@@ -17,7 +17,7 @@ request.interceptors.request.use((config) => {
 
 request.interceptors.response.use(
   (response) => {
-    const res = response.data
+    const res = response.data as any
     if (res.success === false && res.code !== 200) {
       message.error(res.message || '请求失败')
       return Promise.reject(res)
@@ -35,4 +35,4 @@ request.interceptors.response.use(
   }
 )
 
-export default request
+export default request as any
